@@ -38,10 +38,13 @@ func user(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// current time
+	t := time.Now()
+
 	data := map[string]any{
 		"slack_name":      "noornee",
-		"current_day":     time.Now().Format("Monday"),
-		"utc_time":        time.Now().UTC(),
+		"current_day":     t.Format("Monday"),
+		"utc_time":        t.UTC().Truncate(time.Second),
 		"track":           "backend",
 		"github_file_url": "https://github.com/noornee/hngx_stage-1/blob/main/main.go",
 		"github_repo_url": "https://github.com/noornee/hngx_stage-1",
